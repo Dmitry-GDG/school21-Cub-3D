@@ -1,0 +1,299 @@
+Куб3D
+Мой первый RayCaster с miniLibX
+Описание: Этот проект вдохновлен всемирно известной 3D-игрой Wolfenstein, которая стала первым шутером от первого лица. 
+Это позволит вам изучить raycasting. 
+Ваша цель будет заключаться в том, чтобы создать динамичный вид внутри лабиринта, в котором вам нужно будет найти свой путь.
+
+Предисловие
+Игра Wolfenstein 3D, разработанная компанией Id Software знаменитыми Джоном Кармаком и Джоном Ромеро и опубликованная в 1992 году компанией Apogee Software, 
+является первым настоящим шутером от первого лица в истории видеоигр.
+Wolfenstein 3D — предок таких игр, как Doom (Id Software, 1993 г.), Doom II (Id Software, 1994 г.), Duke Nukem 3D (3D Realm, 1996 г.) и Quake (Id Software, 1996 г.), 
+которые являются дополнительными вечными вехами в мир видеоигр.
+Теперь ваша очередь окунуться в историю...
+
+Цели
+Цели этого проекта аналогичны всем целям первого года: строгость, использование C, использование базовых алгоритмов, исследование информации и т. д.
+Как проект графического дизайна, cub3D позволит вам улучшить свои навыки в следующих областях: окна, цвета, события, формы заливки и т. д.
+В заключение можно сказать, что cub3D — это замечательная игровая площадка для игрового практического применения математики без необходимости вникать в ее специфику.
+С помощью многочисленных документов, доступных в Интернете, вы будете использовать математику как инструмент для создания элегантных и эффективных алгоритмов.
+
+Мы рекомендуем вам протестировать оригинальную игру перед запуском этого проекта:
+                       http://users.atw.hu/wolf3d/
+
+Общие инструкции
+• Ваш проект должен быть написан на C.
+• Ваш проект должен быть написан в соответствии с Нормой. Если у вас есть бонусные файлы/функции, они включены в проверку нормы, и вы получите 0, если внутри есть ошибка нормы.
+• Ваши функции не должны завершаться неожиданно (ошибка сегментации, ошибка шины, двойное освобождение и т. д.), за исключением неопределенного поведения. 
+	Если это произойдет, ваш проект будет считаться неработоспособным и получит 0 баллов при оценке.
+• При необходимости все пространство памяти, выделенное в куче, должно быть должным образом освобождено. Никаких утечек не допустимо.
+• Если субъект требует этого, вы должны отправить Makefile, который скомпилирует ваши исходные файлы в требуемый результат с флагами -Wall, -Wextra и -Werror, используйте cc, 
+	и ваш Makefile не должен перекомпоновываться.
+• Ваш Makefile должен как минимум содержать правила $(NAME), all, clean, fclean и re.
+• Чтобы включить бонусы в свой проект, вы должны включить бонусное правило в свой Makefile, которое добавит все различные заголовки, библиотеки или функции, запрещенные в основной части проекта. 
+	Бонусы должны быть в другом файле _bonus.{c/h}. Обязательная и бонусная части оцениваются отдельно.
+• Если ваш проект позволяет вам использовать ваш libft, вы должны скопировать его исходники и связанный с ним файл Makefile в папку libft с соответствующим файлом Makefile. 
+	Makefile вашего проекта должен скомпилировать библиотеку с помощью Makefile, а затем скомпилировать проект.
+• Мы рекомендуем вам создавать тестовые программы для вашего проекта, даже если эту работу не нужно будет отправлять и она не будет оцениваться. 
+	Это даст вам возможность легко проверить свою работу и работу ваших коллег. Вы найдете эти тесты особенно полезными во время вашей защиты. 
+	Действительно, во время защиты вы можете использовать свои тесты и/или тесты коллеги, которого вы оцениваете.
+• Отправьте свою работу в назначенный репозиторий git. Оцениваться будет только работа в репозитории git. 
+	Если Deepthought будет назначен для оценки вашей работы, это будет сделано после вашей коллегиальной оценки. 
+	Если во время оценивания Deepthought произойдет ошибка в каком-либо разделе вашей работы, оценка будет остановлена.
+
+
+Обязательная часть - cub3D
+Program name	cub3D
+Turn in files	All your files
+Makefile		all, clean, fclean, re, bonus
+Arguments		a map in format *.cub
+External functs.
+		• open, close, read, write, printf, malloc, free, perror, strerror, exit
+		• All functions of the math library (-lm man man 3 math)
+		• All functions of the MinilibX
+Libft authorized	Yes
+Описание
+Вы должны создать «реалистичное» трехмерное графическое представление внутренней части лабиринта с точки зрения от первого лица.
+Вы должны создать это представление, используя принципы Ray-Casting, упомянутые ранее.
+
+Ограничения следующие:
+• Вы должны использовать miniLibX. Либо та версия, которая есть в операционной системе, либо из ее исходников. 
+	Если вы решите работать с исходниками, вам нужно будет применить к вашей libft те же правила, которые описаны выше в части «Общие инструкции».
+• Управление вашим окном должно оставаться плавным: переход в другое окно, свертывание и т. д.
+• Отображение различных текстур стен (выбор за вами), которые различаются в зависимости от того, на какую сторону обращена стена (север, юг, восток, запад).
+• Ваша программа должна иметь возможность установить два разных цвета пола и потолка.
+• Программа отображает изображение в окне и соблюдает следующие правила:
+	◦ Клавиши со стрелками влево и вправо на клавиатуре должны позволять вам смотреть влево и вправо в лабиринте.
+	◦ Клавиши W, A, S и D должны позволять перемещать точку обзора по лабиринту.
+	◦ Нажатие ESC должно закрыть окно и полностью закрыть программу.
+	◦ Щелчок по красному крестику в рамке окна должен закрыть окно и полностью закрыть программу.
+	◦ Настоятельно рекомендуется использовать образы minilibX.
+• Ваша программа должна принимать в качестве первого аргумента файл описания сцены с расширением .cub.
+	◦ Карта должна состоять только из 6 возможных символов: 0 для пустого места, 1 для стены и N,S,E или W для стартовой позиции игрока и его ориентации.
+		Это простая действующая карта:
+			111111
+			100101
+			101001
+			1100Н1
+			111111
+
+	◦ Карта должна быть закрыта/окружена стенами, иначе программа должна вернуть ошибку.
+	◦ За исключением содержимого карты, каждый тип элемента может быть разделен одной или несколькими пустыми строками.
+	◦ За исключением содержимого карты, которое всегда должно быть последним, каждый тип элемента может быть установлен в файле в любом порядке.
+	◦ За исключением карты, каждый тип информации из элемента может быть разделен одним или несколькими пробелами.
+	◦ Карта должна анализироваться так, как она выглядит в файле. Пространства являются допустимой частью карты и зависят от вас. 
+		Вы должны иметь возможность анализировать карту любого типа, если она соответствует правилам карты.
+	◦ Для каждого элемента (кроме карты) первой информацией является идентификатор типа (состоящий из одного или двух символов), 
+		за которым следует вся конкретная информация для каждого объекта в строгом порядке, например:
+			* Северная текстура:
+				NO ./path_to_the_north_texture
+					· идентификатор: NO
+					· путь к текстуре севера 
+			* Текстура юга:
+           		SO ./path_to_the_south_texture
+					· идентификатор: SO
+					· путь к южной текстуре 
+			* Западная текстура:
+        		WE ./path_to_the_west_texture
+					· идентификатор: WE
+					· путь к западной текстуре 
+			* восточная текстура:
+				EA ./path_to_the_east_texture
+					· идентификатор: EA
+					· путь к восточной текстуре 
+			∗ Цвет пола:
+				F 220,100,0
+					· идентификатор: F
+					· Цвета R,G,B в диапазоне [0,255]: 0, 255, 255
+			∗ Цвет потолка:
+				C 225,30,0
+					· идентификатор: С
+					· Цвета R,G,B в диапазоне [0,255]: 0, 255, 255
+	◦ Пример обязательной части с минималистичной сценой .cub:
+			NO ./path_to_the_north_texture
+			SO ./path_to_the_south_texture
+			WE ./path_to_the_west_texture
+			EA ./path_to_the_east_texture
+
+			F 220,100,0
+			C 225,30,0
+
+			1111111111111111111111111
+			1000000000110000000000001
+			1011000001110000000000001
+			1001000000000000000000001
+			111111111011000001110000000000001
+			100000000011000001110111111111111
+			11110111111111011100000010001
+			11110111111111011101010010001
+			11000000110101011100000010001
+			10000000000000001100000010001
+			10000000000000001101010010001
+			11000001110101011111011110N0111
+			11110111 1110101 101111010001 
+			11111111 1111111 111111111111
+	◦ Если в файле обнаружена какая-либо неверная конфигурация, программа должна корректно завершить работу и вернуть «Error\n», 
+		за которым следует явное сообщение об ошибке по вашему выбору.
+
+Бонусная часть
+Бонусы будут оцениваться только в том случае, если ваша обязательная часть PERFECT.
+Под ИДЕАЛЬНЫМ мы, естественно, подразумеваем, что он должен быть полным, что он не может выйти из строя, даже в случаях неприятных ошибок, 
+	таких как неправильное использование и т. д.
+Это означает, что если ваша обязательная часть не наберет ВСЕ баллы во время оценки, ваши бонусы будут полностью ИГНОРИРОВАНЫ.
+
+Список бонусов:
+• Столкновения со стенами.
+• Система миникарт.
+• Двери, которые могут открываться и закрываться.
+• анимированный спрайт.
+• Вращайте точку обзора с помощью мыши.
+
+Позже вы сможете создавать лучшие игры, не тратьте слишком много времени!
+
+Вам разрешено использовать другие функции или добавлять символы на карту для завершения бонусной части, 
+если их использование оправдано во время вашей оценки.
+Вы также можете изменить ожидаемый формат файла сцены в соответствии с вашими потребностями.
+
+
+
+
+
+
+
+
+==========================================
+
+cub3D
+My first RayCaster with miniLibX
+Summary: This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to make a dynamic view inside a maze, in which you’ll have to find your way.
+
+Foreword
+Developed by Id Software by the über famous John Carmack and John Romero, pub- lished in 1992 by Apogee Software, Wolfenstein 3D is the first true “First Person Shooter” in the history of video games.
+Wolfenstein 3D is the ancestor of games like Doom (Id Software, 1993), Doom II (Id Software, 1994), Duke Nukem 3D (3D Realm, 1996) and Quake (Id Software, 1996), that are additional eternal milestones in the world of video games.
+Now, it’s your turn to relive History...
+
+Goals
+This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
+As a graphic design project, cub3D will enable you to improve your skills in these areas: windows, colors, events, fill shapes, etc.
+To conclude cub3D is a remarkable playground to explore the playful practical appli- cations of mathematics without having to understand the specifics.
+With the help of the numerous documents available on the internet, you will use mathematics as a tool to create elegant and efficient algorithms.
+
+We recommend that you test the original game before starting this project:
+                       http://users.atw.hu/wolf3d/
+
+					   Common Instructions
+• Your project must be written in C.
+• Your project must be written in accordance with the Norm. If you have bonus files/functions, they are included in the norm check and you will receive a 0 if there is a norm error inside.
+• Your functions should not quit unexpectedly (segmentation fault, bus error, double free, etc) apart from undefined behaviors. If this happens, your project will be considered non functional and will receive a 0 during the evaluation.
+• All heap allocated memory space must be properly freed when necessary. No leaks will be tolerated.
+• If the subject requires it, you must submit a Makefile which will compile your source files to the required output with the flags -Wall, -Wextra and -Werror, use cc, and your Makefile must not relink.
+• Your Makefile must at least contain the rules $(NAME), all, clean, fclean and re.
+• To turn in bonuses to your project, you must include a rule bonus to your Makefile, which will add all the various headers, librairies or functions that are forbidden on the main part of the project. Bonuses must be in a different file _bonus.{c/h}. Mandatory and bonus part evaluation is done separately.
+• If your project allows you to use your libft, you must copy its sources and its associated Makefile in a libft folder with its associated Makefile. Your project’s Makefile must compile the library by using its Makefile, then compile the project.
+• We encourage you to create test programs for your project even though this work won’t have to be submitted and won’t be graded. It will give you a chance to easily test your work and your peers’ work. You will find those tests especially useful during your defence. Indeed, during defence, you are free to use your tests and/or the tests of the peer you are evaluating.
+• Submit your work to your assigned git repository. Only the work in the git reposi- tory will be graded. If Deepthought is assigned to grade your work, it will be done after your peer-evaluations. If an error happens in any section of your work during Deepthought’s grading, the evaluation will stop.
+
+Mandatory part - cub3D
+Program name	cub3D
+Turn in files	All your files
+Makefile		all, clean, fclean, re, bonus
+Arguments		a map in format *.cub
+External functs.
+		• open, close, read, write, printf, malloc, free, perror, strerror, exit
+		• All functions of the math library (-lm man man 3 math)
+		• All functions of the MinilibX
+Libft authorized	Yes
+Description
+You must create a “realistic” 3D graphical representation of the inside of a maze from a first-person perspective.  
+You have to create this representation using the Ray-Casting principles mentioned earlier.
+
+The constraints are as follows:
+• You must use the miniLibX. Either the version that is available on the operating system, or from its sources. If you choose to work with the sources, you will need to apply the same rules for your libft as those written above in Common Instructions part.
+• The management of your window must remain smooth: changing to another win- dow, minimizing, etc.
+• Display different wall textures (the choice is yours) that vary depending on which side the wall is facing (North, South, East, West).
+• Your program must be able to set the floor and ceiling colors to two different ones.
+• The program displays the image in a window and respects the following rules:
+◦ The left and right arrow keys of the keyboard must allow you to look left and right in the maze.
+◦ The W, A, S, and D keys must allow you to move the point of view through the maze.
+◦ Pressing ESC must close the window and quit the program cleanly.
+◦ Clicking on the red cross on the window’s frame must close the window and quit the program cleanly.
+◦ The use of images of the minilibX is strongly recommended.
+• Your program must take as a first argument a scene description file with the .cub extension.
+◦ The map must be composed of only 6 possible characters: 0 for an empty space, 1 for a wall, and N,S,E or W for the player’s start position and spawning orientation.
+This is a simple valid map:
+111111
+100101
+101001
+1100N1
+111111
+
+◦ The map must be closed/surrounded by walls, if not the program must return an error.
+◦ Except for the map content, each type of element can be separated by one or more empty line(s).
+◦ Except for the map content which always has to be the last, each type of element can be set in any order in the file.
+◦ Except for the map, each type of information from an element can be separated by one or more space(s).
+◦ The map must be parsed as it looks in the file. Spaces are a valid part of the map and are up to you to handle. You must be able to parse any kind of map, as long as it respects the rules of the map.
+◦ Each element (except the map) firsts information is the type identifier (com- posed by one or two character(s)), followed by all specific informations for each object in a strict order such as :
+	∗ North texture:
+         NO ./path_to_the_north_texture
+			· identifier: NO
+			· path to the north texure 
+	∗ South texture:
+         SO ./path_to_the_south_texture
+			· identifier: SO
+			· path to the south texure 
+	∗ West texture:
+         WE ./path_to_the_west_texture
+			· identifier: WE
+			· path to the west texure 
+	∗ East texture:
+         EA ./path_to_the_east_texture
+			· identifier: EA
+			· path to the east texure 
+	∗ Floor color:
+		F 220,100,0
+			· identifier: F
+			· R,G,B colors in range [0,255]: 0, 255, 255
+	∗ Ceilling color:
+		C 225,30,0
+			· identifier: C
+			· R,G,B colors in range [0,255]: 0, 255, 255
+◦ Example of the mandatory part with a minimalist .cub scene:
+	NO ./path_to_the_north_texture
+	SO ./path_to_the_south_texture
+	WE ./path_to_the_west_texture
+	EA ./path_to_the_east_texture
+
+	F 220,100,0
+	C 225,30,0
+	1111111111111111111111111
+	1000000000110000000000001
+	1011000001110000000000001
+	1001000000000000000000001
+	111111111011000001110000000000001
+	100000000011000001110111111111111
+	11110111111111011100000010001
+	11110111111111011101010010001
+	11000000110101011100000010001
+	10000000000000001100000010001
+	10000000000000001101010010001
+	11000001110101011111011110N0111
+	11110111 1110101 101111010001 
+	11111111 1111111 111111111111
+◦ If any misconfiguration of any kind is encountered in the file, the program must exit properly and return "Error\n" followed by an explicit error message of your choice.
+
+Bonus part
+Bonuses will be evaluated only if your mandatory part is PERFECT.
+By PERFECT we naturally mean that it needs to be complete, that it cannot fail, even in cases of nasty mistakes like wrong uses etc.
+It means that if your mandatory part does not obtain ALL the points during the grading, your bonuses will be entirely IGNORED.
+
+Bonus list:
+• Wall collisions.
+• A minimap system.
+• Doors which can open and close.
+• animated sprite.
+• Rotate the point of view with the mouse.
+
+You will be able to create better games later do not waste too much time!
+
+You are allowed to use other functions or add symbols on the map to complete the bonus part as long as their use is justified during your evaluation.  
+You are also allowed to modify the expected scene file format to fit your needs.  
+Be smart!
