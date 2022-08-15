@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acristin <acristin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:41:34 by acristin          #+#    #+#             */
-/*   Updated: 2022/04/06 14:42:56 by acristin         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:48:08 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mouse_move(int x, int y, t_game *game)
 	if (y > 0 && y < (int)game->img_resolution_y)
 	{
 		if (x > (int)game->img_resolution_x * 3 / 5
-			&& x < (int)game->img_resolution_x * 2)
+			&& x < (int)game->img_resolution_x)
 			game->p_angle += 0.01;
 		else if (x < (int)game->img_resolution_x * 2 / 5 && x > 0)
 			game->p_angle -= 0.01;
